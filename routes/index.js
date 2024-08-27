@@ -55,4 +55,47 @@ router.put('/update/:name', async function(req, res) {
 
 
 
+router.get('/ban',function(req,res){
+    req.session.ban= true;
+    res.send('<h1>You are banned!!!!</h1>');
+})
+
+router.get('/checkban',function(req,res){
+  if(req.session.ban===true){
+
+    res.send("you are banned")
+  }else{
+    res.send("You are not banned")
+  }
+  
+})
+
+router.get('/removeban',function(req,res){
+  req.session.destroy(function(err){
+   if (err) throw err;
+    res.send('<h1>Ban removed</h1>');
+  });
+})
+
+
+router.get('/cookies',function(req,res){
+  res.cookie("age",25)
+  res.render("index")
+ 
+})
+
+router.get('/readcookie',function(req,res){
+  console.log(req.cookies.age);
+  res.send("cookie value is on console ")
+})
+router.get('/deletecookie',function(req,res){
+  res.clearCookie("age");
+  res.send("cookie cleared")
+})
+
+
+
+
+
+
 module.exports = router;
