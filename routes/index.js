@@ -6,7 +6,7 @@ router.get('/',function(req,res){
   res.render('index')
 })
 
-router.post('/create/:name/:age', async function(req, res) {
+router.get('/create/:name/:age', async function(req, res) {
   const name = req.params.name; // we are taking name dynamically from url
   const age = req.params.age;  //  same here taking age dynamincally and 
   
